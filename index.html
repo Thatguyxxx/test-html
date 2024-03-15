@@ -1,0 +1,58 @@
+<DOCTYPE HTML>
+<html>
+<head>
+<title>Testtime</title>
+</head>
+<body>
+<br>
+<br>
+<h1 id='insert'> Insert an x position to determine the y value</h1>
+<input id='x1' type='number'></input>
+<input id='y1' type='number'></input>
+<input id='x2' type='number'></input>
+<input id='y2' type='number'></input>
+<input id='rule' type='number'></input>
+<button onclick=calculate()>Calculate!</input>
+<button id='findy' onclick=findy()>Find y</input>
+</body>
+<script>
+rule.hidden = true
+insert.hidden = true
+findy.hidden = true
+var x1= 0
+var x2=0
+var y1=0
+var y2=0
+var m = 0
+var xdif  = 0
+function calculate() {
+x1 = document.getElementById('x1').value
+x2 = document.getElementById('x2').value
+y1= document.getElementById('y1').value
+y2 = document.getElementById('y2').value
+m = (y1 - y2) / (x1 - x2)
+if (x1 <= 0) {
+//alert('it needs to be increased')
+rule.hidden = false
+insert.hidden = false
+findy.hidden = false
+y1 = Number(y1) + (x1 * -1) * m
+alert('The rule is: y = ' + m + 'x' + ' + ' + y1)
+} else {
+//alert('it needs to be decreased')
+rule.hidden = false
+findy.hidden = false
+insert.hidden = false
+y1 = y1 - m * x1
+alert('The rule is: y = ' + m + 'x' + ' + ' + y1)
+
+}
+}
+function findy() {
+var xvalue = 0
+xvalue = document.getElementById('rule').value
+alert(xvalue * m + y1)
+}
+</script>
+
+</html>
