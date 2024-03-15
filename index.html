@@ -1,56 +1,27 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Testtime</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Request Example</title>
 </head>
 <body>
-<br>
-<br>
-<h1 id='insert'> Insert an x position to determine the y value</h1>
-<input id='x1' type='number' />
-<input id='y1' type='number' />
-<input id='x2' type='number' />
-<input id='y2' type='number' />
-<input id='rule' type='number' />
-<button onclick="calculate()">Calculate!</button>
-<button id='findy' onclick="findy()">Find y</button>
+    <h1>GET Request Example</h1>
+    <p id="queryParams"></p>
+
+    <script>
+        // Function to parse the query string and display it
+        function displayQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let queryString = '';
+            for (const [key, value] of urlParams.entries()) {
+                queryString += `${key}: ${value}<br>`;
+            }
+            document.getElementById('queryParams').innerHTML = queryString;
+        }
+
+        // Call the function when the page loads
+        window.onload = displayQueryParams;
+    </script>
 </body>
-<script>
-rule.hidden = true
-insert.hidden = true
-findy.hidden = true
-var x1= 0
-var x2=0
-var y1=0
-var y2=0
-var m = 0
-var xdif = 0
-function calculate() {
-x1 = document.getElementById('x1').value
-x2 = document.getElementById('x2').value
-y1= document.getElementById('y1').value
-y2 = document.getElementById('y2').value
-m = (y1 - y2) / (x1 - x2)
-if (x1 <= 0) {
-//alert('it needs to be increased')
-rule.hidden = false
-insert.hidden = false
-findy.hidden = false
-y1 = Number(y1) + (x1 * -1) * m
-alert('The rule is: y = ' + m + 'x' + ' + ' + y1)
-} else {
-//alert('it needs to be decreased')
-rule.hidden = false
-findy.hidden = false
-insert.hidden = false
-y1 = y1 - m * x1
-alert('The rule is: y = ' + m + 'x' + ' + ' + y1)
-}
-}
-function findy() {
-var xvalue = 0
-xvalue = document.getElementById('rule').value
-alert(xvalue * m + y1)
-}
-</script>
 </html>
